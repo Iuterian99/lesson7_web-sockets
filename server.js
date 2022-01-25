@@ -13,7 +13,7 @@ const server = app.listen(7000, console.log(7000));
 const io = socketIO(server);
 
 io.on("connection", (socket) => {
-  socket.on("new user", ({ id, JoinedUserName }) => {
-    console.log(id, JoinedUserName);
+  socket.on("new user", ({ JoinedUserName, message }) => {
+    socket.broadcast.emit("new user", { JoinedUserName, message });
   });
 });
