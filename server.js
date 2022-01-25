@@ -4,7 +4,10 @@ Web Sockets are used for real time applications like telegram which This means t
 
 const express = require("express");
 const app = express();
+const socketIO = require("socket.io");
 
 app.use(express.static("public"));
 
-app.listen(9000, console.log(9000));
+const server = app.listen(9000, console.log(9000));
+
+const io = socketIO(server);
